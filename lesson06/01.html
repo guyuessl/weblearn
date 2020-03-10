@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>完美拖拽</title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			body{background: #000;}
+			#box{width: 300px;height: 150px;border:#fff 2px solid;position: absolute;top: 50%;left: 50%;background-color: #666666;}
+			#box h2{height: 30px;background-color: #57646E;border-bottom: #fff 2px solid;}
+			#box h2:hover{cursor: move;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var isDrag = false;
+				var offx = offy = 0;
+				
+				
+				var oBox = document.getElementById("box");
+				var oH2 = document.getElementsByTagName("h2")[0];
+				var arrSpan = document.getElementsByTagName("span")
+				oH2.onmousedown = function(event){
+					var event = event || window.event;
+					isDrag = true;
+					offx = event.clientX - oBox.offsetLeft;
+					offY = event.clientY - oBox.offsetTop;
+					showInfo();
+					// this.setCapture && this.setCapture();
+					return false;
+				}
+				
+				document.onmouseover = function(event){
+					// console.log(isDrag)
+					if(!isDrag)return
+					// console.log("##document##22#")
+					var event = event || window.event;
+					var maxX = document.documentElement.clientWidth - oBox.offsetWidth;
+					var maxY = document.documentElement.clientHeight - oBox.offsetHeight;
+					var x = event.clientX - offx;
+					var y = event.clientY-offy;
+					x = x<0?0:x;
+					x = x>maxX?maxX:x;
+					
+					y = y<0?0:y;
+					y = y>maxY?maxY:y;
+					
+					oBox.style.left = x+"px";
+					oBox.style.top = y+"px";
+					showInfo();
+					return false;
+				}
+				document.onmouseup = oH2.onlosecapture = function(){
+					isDrag = false;
+					showInfo();
+					// oH2.releaseCapture && oH2.releaseCapture();
+				}
+				function showInfo(){
+					arrSpan[0].innerHTML = isDrag;
+					arrSpan[1].innerHTML = oBox.offsetTop;
+					arrSpan[2].innerHTML = oBox.offsetLeft;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<h2></h2>
+			<p>Drag:<span></span></p>
+			<p>offsetTop:<span></span></p>
+			<p>offsetLeft:<span></span></p>
+		</div>
+	</body>
+</html>

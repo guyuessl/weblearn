@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>网页换肤</title>
+		<link rel="stylesheet" type="text/css" href="css/red.css"/>
+		<style type="text/css">
+			.box{height: 20px;}
+			li{list-style-type:none;}
+			a:link,a:visited{text-decoration:none;}
+			a:hover{text-decoration:underline;}
+			.content{width:500px;margin:0 auto;}
+			#red{border-color:red;background:red;}
+			#green{border-color:green;background:green;}
+			#black{border-color:black;background:black;}
+			#change-box{height: 20px; padding-left: 1px;}
+			#change-box li{float:left;width:6px;height:6px;cursor:pointer;overflow:hidden;margin-right:10px;text-indent:-9999px;border-width:4px;border-style:solid;}
+
+			#nav-list{border:1px solid #fff;background-color: #000000;height: 25px;padding: 1px;}
+			#nav-list li{float:left;width:80px;line-height:25px;text-align:center;border-right:1px solid #fff;}
+			#nav-list li.last{width:81px;border-right-width:0;}
+			#nav-list li a{color:#fff;}
+			
+			#change-box li.current{background:#fff!important;}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var inlink = document.getElementsByTagName("link")[0];
+				var arr = document.getElementById("change-box").getElementsByTagName("li");
+				for(var i = 0;i<arr.length;i++){
+					arr[i].onclick = function(){
+						for(var index in arr){
+							arr[index].className ="";
+						};
+						this.className ="current";
+						inlink.href = "css/"+this.id+".css"
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="box">
+				<ul id="change-box">
+					<li id="red" title="红">红</li>
+					<li id="green" title="绿">绿</li>
+					<li id="black" title="黑">黑</li>
+				</ul>
+			</div>
+			<div class="nav">
+				<ul id="nav-list">
+					<li><a href="javascript:;">新闻</a></li>
+					<li><a href="javascript:;">娱乐</a></li>
+					<li><a href="javascript:;">体育</a></li>
+					<li><a href="javascript:;">电影</a></li>
+					<li><a href="javascript:;">音乐</a></li>
+					<li class="last"><a href="javascript:;">旅游</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标移入改变样式</title>
+		<style type="text/css">
+
+			#show{
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+				background: #000000;
+				color: #fff;
+				border: #000 10px solid;
+			}
+			#show:hover{
+				background:#fff;
+				border: #FF0000 10px solid;
+				color: #FF0000;
+				cursor:crosshair;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="show">
+				鼠标移入改变样式，鼠标移出恢复。
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>控制div属性</title>
+		<style type="text/css">
+			.box{width: 1000px;margin: 0 auto;text-align: center;}
+			.box input{width: 100px;height: 50px;font-size: 20px;}
+			#show{width: 500px;height: 500px;background-color: #ccc;margin: 100px auto;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var propertys = ["width","height","backgroundColor","display","display"];
+				var values = ["800px","800px","#000","none","block"];
+				
+				var arr = document.getElementsByTagName("input");
+				var divs = document.getElementById("show");
+				
+				for(var i=0;i<arr.length;i++){
+					arr[i].index = i;
+					arr[i].onclick = function(){
+						if(this.index == arr.length-1){
+							divs.style.cssText="";
+						}
+						divs.style[propertys[this.index]] = values[this.index]
+					}
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<input type="button" value = "变宽" />
+			<input type="button" value = "变高" />
+			<input type="button" value = "变色" />
+			<input type="button" value = "隐藏" />
+			<input type="button" value = "重置" />
+			<div id="show"></div>
+		</div>
+	</body>
+</html>

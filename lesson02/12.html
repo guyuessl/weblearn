@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>复选框（checkbox）全选/全不选/返选</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			ul{list-style-type: none;}
+			#content{width: 160px;border: #000000 1px solid;margin: 50px auto;border-radius: 5px;}
+			#ul-list li{margin:20px 10px;}
+			#ul-list li input{margin-right: 5px;}
+			.unselect{margin-left: 30px;color: #4aa4fd;}
+			.unselect:hover{color: red;cursor: pointer;}
+			.select{font-weight: bold;}
+			.first::after{content: "";display: block;width: 130px;height: 20px;border-bottom: #000000 1px solid;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var arr = document.getElementById("ul-list").getElementsByTagName("input");
+				var select = document.getElementsByClassName("select")[0];
+				var unselect = document.getElementsByClassName("unselect")[0];
+				
+				function checkSelect(){
+					var sum = 0;
+					for(var i=1;i<arr.length;i++){
+						if(arr[i].checked) sum++
+					}
+					arr[0].checked = sum == arr.length-1?true:false
+					select.innerHTML = arr[0].checked?"全不选":"全选"
+				}
+				
+				arr[0].onclick = function(){
+					for(var i=1;i<arr.length;i++){
+						arr[i].checked = this.checked;
+						arr[i].onclick = function(){
+							if(!this.checked){
+								checkSelect();
+							}
+						}
+					}
+					checkSelect();
+				}
+				unselect.onclick = function(){
+					for(var i=1;i<arr.length;i++){
+						arr[i].checked = !arr[i].checked;
+					}
+					checkSelect();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<ul id="ul-list">
+				<li class="first"><input type="checkbox" name="item" /><label class="select">全选</label><label class="unselect">反选</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（一）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（二）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（三）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（四）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（五）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（六）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（七）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（八）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（九）</label></li>
+				<li><input type="checkbox" name="item" /><label>选项（十）</label></li>
+			</ul>
+		</div>
+	</body>
+</html>

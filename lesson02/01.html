@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>百度输入法</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			li{list-style-type: none}
+			a:link,a:visited{text-decoration:none;}
+			a:hover{text-decoration:none;}
+			.box{margin: 0 auto;text-align: center;}
+
+			#li-list{width: 50px;margin: 0 auto;border: #008000 1px solid;display: none;}
+			.li-last{border-top:  #008000 1px solid;}
+			#li-list li a{color:#00c;padding:0 5px;display:block;text-decoration:none;text-align: center;}
+			#li-list li{width: 50px;height: 22px;line-height: 22px;}
+			#li-list li:hover{background-color: red;}
+
+		</style>
+		<script type="text/javascript">
+
+			window.onload = function(){
+				var btn = document.getElementById("btn");
+				var list = document.getElementById("li-list");
+				var close = document.getElementById("li-last");
+				var state = 0;
+				
+				btn.onclick = function(){
+					console.log(state)
+					if(state == 1){
+						list.style.display ="none";
+						state = 0;
+					}else{
+						list.style.display ="block";
+						state = 1;
+					}
+				}
+				close.onclick = function(){
+					list.style.display ="none";
+					state = 0;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<button type="button" id="btn">输入法</button>
+		</div>
+		<div id="content">
+			<ul id="li-list">
+				<li><a href="javascript:;">手写</a></li>
+				<li><a href="javascript:;">拼音</a></li>
+				<li id="li-last"><a href="javascript:;">关闭</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

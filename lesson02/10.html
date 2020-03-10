@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>提示框效果</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			a,a:hover,a:active{text-decoration: none;}
+			a:link,a:visited{color: #000000;}
+			#box{width: 560px;border: #000000 1px solid;margin: 20px auto;}
+			#box h2{text-align: center;margin: 20px;}
+			#ul-list{list-style-type: none;padding-left: 5px;margin-bottom: 10px;}
+			#ul-list::after{content: "";display: block;clear: both;}
+			#ul-list li{float: left;position: relative;}
+			#ul-list li a{display: inline-block;width: 100px;height: 100px;background: #ccc;margin: 5px;padding: 10px;font-size: 14px;box-sizing: border-box;cursor: crosshair;}
+			#ul-list li img{width: 120px;height: 120px;position: absolute;top: -5px;left: 0;display: none;box-shadow: 0 0 5px #000;z-index: 10;}
+
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var llist = document.getElementById("ul-list").getElementsByTagName("li");
+				var ilist = document.getElementById("ul-list").getElementsByTagName("img");
+				
+				for(var i=0;i<llist.length;i++){
+					llist[i].index = i;
+					llist[i].onmouseover = function(){
+
+
+						ilist[this.index].style.display = "block"
+					}
+					llist[i].onmouseout = function(){
+						ilist[this.index].style.display = "none"
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<h2>名车车标展示-鼠标移过显示车标</h2>
+			<ul id="ul-list">
+				<li>
+					<a href="javascript:;" title="BMW 宝马汽车"><strong>BMW</strong>宝马汽车</a>
+					<img src="img/1.jpg" alt="BMW 宝马汽车" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Alfa Romeo 阿尔法-罗米欧"><strong>Alfa Romeo</strong> 阿尔法-罗米欧</a>
+					<img src="img/2.jpg" alt="Alfa Romeo 阿尔法-罗米欧" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Skoda 斯柯达"><strong>Skoda</strong> 斯柯达</a>
+					<img src="img/3.jpg" alt="Skoda 斯柯达" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Volkswagen 大众汽车"><strong>Volkswagen</strong> 大众汽车</a>
+					<img src="img/4.jpg" alt="Volkswagen 大众汽车" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Saab 萨布牌轿"><strong>Saab</strong> 萨布牌轿车</a>
+					<img src="img/5.jpg" alt="Saab 萨布牌轿" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Lamborghini 兰博基尼"><strong>Lamborghini</strong> 兰博基尼</a>
+					<img src="img/6.jpg" alt="Lamborghini 兰博基尼" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Porsche 保时捷"><strong>Porsche</strong> 保时捷</a>
+					<img src="img/7.jpg" alt="Porsche 保时捷" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Peugeot 标致"><strong>Peugeot</strong> 标致</a>
+					<img src="img/8.jpg" alt="Peugeot 标致" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Mercedes1 梅赛德斯 奔驰"><strong>Mercedes1</strong> 梅赛德斯 奔驰</a>
+					<img src="img/9.jpg" alt="Mercedes1 梅赛德斯 奔驰" />
+				</li>
+				<li>
+					<a href="javascript:;" title="Buick 别克汽车"><strong>Buick</strong> 别克汽车</a>
+					<img src="img/10.jpg" alt="Buick 别克汽车" />
+				</li>
+						
+			</ul>
+		</div>
+	</body>
+</html>
